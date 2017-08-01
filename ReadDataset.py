@@ -83,12 +83,6 @@ class Dataset_features():
     else:
       index = np.arange(st, self.counter)
     return self.images[index], self.labels[index]
-
-def Dataset(data_file, dataset_type='images', shape=(224,224,3), counter=0, mean=[103.939, 116.779, 123.68]):
-  if(dataset_type.endswith('features')):
-    return Dataset_features(data_file[0], data_file[1], counter)
-  else:
-    return Dataset_images(data_file, shape=shape, mean=mean, counter=counter) 
      
 class Dataset_images():
   def __init__(self, data_file, shape=(224, 224, 3), mean=[103.939, 116.779, 123.68], counter=0):
@@ -118,5 +112,9 @@ class Dataset_images():
       index = np.arange(st, self.counter)
     return load_images(self.img_paths[index], self.imgshape, mean=self.mean_img, crop=1, nt=nt), self.labels[index]
  
-
+def Dataset(data_file, dataset_type='images', shape=(224,224,3), counter=0, mean=[103.939, 116.779, 123.68]):
+  if(dataset_type.endswith('features')):
+    return Dataset_features(data_file[0], data_file[1], counter)
+  else:
+    return Dataset_images(data_file, shape=shape, mean=mean, counter=counter) 
    
