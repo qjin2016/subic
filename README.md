@@ -1,13 +1,14 @@
-## S<font size="4">U</font>B<font size="4">I</font>C: A supervised, structured binary code for image search
+## <span style="font-variant:small-caps;">SuBiC</span>: A supervised, structured binary code for image search
 ![subic](subic.png)
 
-**Tensorflow implementation of our paper**  
+**Tensorflow implementation of our paper, which proposes a supervised approach to learn highly compressed image representations.**  
+
 
 #### To train: 
-You need to provide a *path_file* with paths for all training images along with their label ids. 
+It requires a *path_file* with paths of all training images along with their label ids. 
 
-To trained from a pre-trained base-CNN and fine-tuning only the new layers, as we do in the paper, run: 
-`ipython train_subic --m 8 --k 256 --nclass 1000 --img_path path_file --pretrained trained_model --skip_last 2 --finetune 2`
+To train from a pre-trained base-CNN and fine-tuning only the new layers, as we do in the paper, run: 
+`ipython train_subic --m 8 --k 256 --nclass 1000 --img_path path_file --pretrained subic.npy --skip_last 2 --finetune 2`
 
 Or for a full training run:  
 `ipython train_subic --m 8 --k 256 --nclass #classes --img_path path_file`
@@ -17,10 +18,10 @@ Check the arguments in *train_subic.py* to try different parameters and settings
 The *path_file* should look like,  
 ```
 path/to/imagenet/images/000001.jpg 0
-path/to/imagenet/images/000001.jpg 0
+path/to/imagenet/images/000002.jpg 4
 ```
 
-subic.npy is our trained model download it from [here](https://drive.google.com/drive/folders/0Bz7VLuL7oLuvZmczV3gxSjVlTlk?usp=sharing). It has 8 layers, the first 7 layers are of VGG_M_128 and the weights are from [link](http://www.robots.ox.ac.uk/~vgg/software/deep_eval/releases/bvlc/VGG_CNN_M_128.caffemodel).
+subic.npy is our trained model download it from [here](https://drive.google.com/drive/folders/0Bz7VLuL7oLuvZmczV3gxSjVlTlk?usp=sharing). It has 8 layers, the first 7 layers are of VGG_M_128 and the weights are from a [caffe model](http://www.robots.ox.ac.uk/~vgg/software/deep_eval/releases/bvlc/VGG_CNN_M_128.caffemodel).
 
 #### To test:
 

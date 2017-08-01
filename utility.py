@@ -21,7 +21,7 @@ def wrapper_net(wnet, net, m=8, k=256):
 def get_subic(dataset, data_file, wnet, net, m, k, param_file, nsize, shape, gpu, gpu_frac, ldim=1):
   bsize=100
   TX, TY = ext_features(wrapper_net(wnet, net, m, k), param_file, Dataset(data_file, dataset), bsize*np.int(np.ceil(float(nsize)/bsize)), bsize=bsize, seq=True, label_dim=ldim, gpu=gpu, frac=gpu_frac)
-  return TX[:nsize].astype('float32'), TY[:nsize]
+  return TX[:nsize].astype('float32'), TY[:nsize]  ## Only first nsize images are used.
 
 def retrieve(m, k, x, q, labelq, labelx, multilabel=False):
   code = np.zeros((m, x.shape[0]), dtype=int)

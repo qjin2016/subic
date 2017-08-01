@@ -1,6 +1,3 @@
-## Example run
-## run test_subic subic_imagenet_m8_k256_be1_me1_lr1e-4_5k.npy VGG_M_128 --wnet SUBIC --m 8 --k 256 --testset pascalvoc_features --gpu 0 --frac 0.5
-
 import numpy as np
 from utility import *
 import argparse
@@ -56,7 +53,7 @@ if(dataset.startswith('pascalvoc')):
   mlabel = True; ldim=20
   data_file = ''
   if(dataset.endswith('features')):
-    data_file = ['/nfs/pyrex/raid6/hjain/practice/features/VGG_128/VOC_9963_vgg128_X.npy', '/nfs/pyrex/raid6/hjain/practice/features/VGG_128/VOC_9963_vgg128_Y_01.npy']
+    data_file = ['VOC_9963_vgg128_X.npy', 'VOC_9963_vgg128_Y_01.npy']
 elif(dataset.startswith('caltech101')):
   nclass = 100 ## The two face classes are merged and background class is rejected. 
   split = 1000
